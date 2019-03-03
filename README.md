@@ -13,7 +13,7 @@ to first authenticate it once with the discord websocket. This only needs to be 
 opposed to programmatically).
 
 # Gradle/Maven
-Coming soon to RodiconRepo
+Check here for the maven/gradle import instructions: https://bintray.com/rodiconmc/RodiconRepo/Rodicord
 
 # Javadocs
-Coming Soon
+https://rodiconmc.github.io/Rodicord

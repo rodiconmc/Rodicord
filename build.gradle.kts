@@ -31,7 +31,7 @@ configure<PublishExtension> {
     userOrg = "rodiconmc"
     repoName = "RodiconRepo"
     groupId = "com.rodiconmc"
-    artifactId = "rodicord"
+    artifactId = "Rodicord"
     publishVersion = "0.1.0"
     desc = "Rodicord is a library for manipulating the Discord Api via a distributed system."
     website = "https://github.com/rodiconmc/Rodicord"
