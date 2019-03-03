@@ -16,4 +16,4 @@ opposed to programmatically).
 Check here for the maven/gradle import instructions: https://bintray.com/rodiconmc/RodiconRepo/Rodicord
 
 # Javadocs
-https://rodiconmc.github.io/Rodicord
+https://rodiconmc.github.io/Rodicord/
