@@ -17,7 +17,7 @@ import java.util.Map;
  * A class for manipulating Bot endpoints. For bots, see the {@link Bearer} class.
  */
 public class Bot extends Agent {
-    Bot(BotToken token) {
+    public Bot(BotToken token) {
         super(token);
     }
 

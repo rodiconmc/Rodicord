@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.rodiconmc.rodicord"},{"l":"com.rodiconmc.rodicord.objects"},{"l":"com.rodiconmc.rodicord.objects.channel"},{"l":"com.rodiconmc.rodicord.objects.guild"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.rodiconmc.rodicord"},{"l":"com.rodiconmc.rodicord.objects"},{"l":"com.rodiconmc.rodicord.objects.channel"},{"l":"com.rodiconmc.rodicord.objects.guild"},{"l":"com.rodiconmc.rodicord.util"}]

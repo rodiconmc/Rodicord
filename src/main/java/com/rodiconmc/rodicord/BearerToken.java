@@ -13,40 +13,47 @@ public class BearerToken extends Token {
 
     private String accessToken;
     private String refreshToken;
+    private String scope;
     private Date expiresAt;
     private Set<Consumer<BearerToken>> changeListeners = new HashSet<>();
 
     /**
      * @param accessToken The Access Token given by the Discord Oauth2 API
      * @param refreshToken The Refresh Token given by the Discord Oauth2 API
+     * @param scope The scopes requested when the token was made, space-delimited
      * @param expiresAt The date object representing when the Access Token expires
      */
-    public BearerToken(String accessToken, String refreshToken, Date expiresAt) {
+    public BearerToken(String accessToken, String refreshToken, String scope, Date expiresAt) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+        this.scope = scope;
         this.expiresAt = expiresAt;
     }
 
     /**
      * @param accessToken The Access Token given by the Discord Oauth2 API
      * @param refreshToken The Refresh Token given by the Discord Oauth2 API
+     * @param scope The scopes requested when the token was made, space-delimited
      * @param expiresAt The epoch time for when the Access Token expires (Millliseconds since January 1, 1970, 00:00:00 GMT)
      */
-    public BearerToken(String accessToken, String refreshToken, long expiresAt) {
+    public BearerToken(String accessToken, String refreshToken, String scope, long expiresAt) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+        this.scope = scope;
         this.expiresAt = new Date(expiresAt);
     }
 
     /**
      * @param accessToken The Access Token given by the Discord Oauth2 API
      * @param refreshToken The Refresh Token given by the Discord Oauth2 API
+     * @param scope The scopes requested when the token was made, space-delimited
      * @param expiresAt The date object representing when the Access Token expires
      * @param changeListeners Consumers which should be run when any token data is updated.
      */
-    public BearerToken(String accessToken, String refreshToken, Date expiresAt, Consumer<BearerToken>... changeListeners) {
+    public BearerToken(String accessToken, String refreshToken, String scope, Date expiresAt, Consumer<BearerToken>... changeListeners) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+        this.scope = scope;
         this.expiresAt = expiresAt;
         this.changeListeners.addAll(Arrays.asList(changeListeners));
     }
@@ -54,12 +61,14 @@ public class BearerToken extends Token {
     /**
      * @param accessToken The Access Token given by the Discord Oauth2 API
      * @param refreshToken The Refresh Token given by the Discord Oauth2 API
+     * @param scope The scopes requested when the token was made, space-delimited
      * @param expiresAt The epoch time for when the Access Token expires (Milliseconds since January 1, 1970, 00:00:00 GMT)
      * @param changeListeners Consumers which should be run when any token data is updated
      */
-    public BearerToken(String accessToken, String refreshToken, long expiresAt, Consumer<BearerToken>... changeListeners) {
+    public BearerToken(String accessToken, String refreshToken, String scope, long expiresAt, Consumer<BearerToken>... changeListeners) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+        this.scope = scope;
         this.expiresAt = new Date(expiresAt);
         this.changeListeners.addAll(Arrays.asList(changeListeners));
     }
@@ -85,23 +94,26 @@ public class BearerToken extends Token {
         return refreshToken;
     }
 
+    public String getScope() {
+        return scope;
+    }
+
     public Date getExpiresAt() {
         return expiresAt;
     }
 
-    void setAccessToken(String accessToken) {
+    void setAccessToken(String accessToken, Date expiresAt) {
         this.accessToken = accessToken;
+        this.expiresAt = expiresAt;
+        callChangeListeners();
     }
 
     void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+        callChangeListeners();
     }
 
-    void setExpiresAt(Date expiresAt) {
-        this.expiresAt = expiresAt;
-    }
-
-    void callChangeListeners() {
+    private void callChangeListeners() {
         for (Consumer<BearerToken> changeListener : changeListeners) {
             changeListener.accept(this);
         }

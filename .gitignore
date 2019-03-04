@@ -31,3 +31,4 @@ out/
 
 #Testing
 /src/test/java/com/rodiconmc/rodicord/BotTest.java
+/src/test/java/com/rodiconmc/rodicord/BearerTest.java
